@@ -1,0 +1,13 @@
+.venv/
+
+game_history.json
+
+pycache/
+
+*.pyc
+*.pyo
+*.pyd
+
+.pytest_cache/
+
+*.log
