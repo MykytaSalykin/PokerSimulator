@@ -1,0 +1,33 @@
+{
+    "rounds": 1,
+    "wins": 1,
+    "losses": 0,
+    "ties": 0,
+    "money": 397,
+    "bets": {
+        "round1": 200
+    },
+    "probabilities": {},
+    "hands": {
+        "round1": {
+            "player_hole": [
+                "8S",
+                "KC"
+            ],
+            "opponent_hole": [
+                "10S",
+                "6H"
+            ],
+            "community_cards": [
+                "5S",
+                "5D",
+                "4C",
+                "KS",
+                "7D"
+            ],
+            "result": "Player",
+            "player_rank": "Two Pair",
+            "opponent_rank": "One Pair"
+        }
+    }
+}
