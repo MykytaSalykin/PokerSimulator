@@ -1,0 +1,8 @@
+[project]
+name = "poker-simulator"
+version = "1.0.0"
+description = "A CLI-based poker hand simulator"
+dependencies = [
+    "click==8.1.7",
+    "pytest==8.3.3"
+]
