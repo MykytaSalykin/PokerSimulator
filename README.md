@@ -1,7 +1,7 @@
+```markdown
 # Poker Simulator (Texas Hold'em)
 
 A Python-based CLI simulator for Texas Hold'em poker, featuring hand dealing, evaluation, betting rounds (preflop, flop, turn, river), dynamic opponent behavior, and game history logging.
-
 
 ## Features
 - Simulates Texas Hold'em with 2 pocket cards and 5 community cards (flop, turn, river).
@@ -18,38 +18,45 @@ A Python-based CLI simulator for Texas Hold'em poker, featuring hand dealing, ev
 - Saves game history to `game_history.json` with bets, hands, and results for analysis.
 - Includes unit tests for deck, hand evaluation, and opponent behavior.
 
-
 ## Installation
+
 1. Clone the repository:
+   ```bash
    git clone https://github.com/MykytaSalykin/PokerSimulator.git
    cd PokerSimulator
 
 2. Create and activate a virtual environment:
+   ```bash
    python -m venv .venv
    source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 
 3. Install dependencies:
+   ```bash
    pip install -r requirements.txt
 
 
 
 ## Usage
 Run the CLI with:
+```bash
 python -m src.cli
 
 
 ## Commands
-Info: Display poker hand rankings and optional probabilities.
+Info: Display poker hand rankings and optional probabilities:
+```bash
 python -m src.cli info
 python -m src.cli info --probability
 
 Example output:
 Royal Flush: 10 - 0.0002% - 1 in 649,740
 Straight Flush: 9 - 0.0014% - 1 in 72,193
+Four of a Kind: 8 - 0.0240% - 1 in 4,165
 ...
 
 
-Deal: Deal pocket cards for specified number of players (shows flop for example).
+Deal: Deal pocket cards for specified number of players (shows flop for example):
+```bash
 python -m src.cli deal --hands 2
 
 Example output:
@@ -60,7 +67,8 @@ Your cards: 2C, 3D
 Flop: 10H, JH, QH
 Hand Rank (with flop): High Card
 
-Play: Play a single hand against the computer with a fixed bet.
+Play: Play a single hand against the computer with a fixed bet:
+```bash
 python -m src.cli play --name Nikita --bet 10
 
 Example output:
@@ -75,7 +83,8 @@ Opponent's hand: ['2C', '3D'] + ['10H', 'JH', 'QH', '2C', '3D'] -> High Card
 Nikita wins $20 with Royal Flush!
 
 
-Interactive: Play multiple rounds with betting rounds (preflop, flop, turn, river).
+Interactive: Play multiple rounds with betting rounds (preflop, flop, turn, river):
+```bash
 python -m src.cli interactive --name Nikita --rounds 3 --money 100
 
 Example output:
@@ -123,8 +132,10 @@ pytest tests/
 ## Requirements
    Python 3.8+
    click==8.1.7
+   colorama==0.4.6
+   iniconfig==2.1.0
+   packaging==25.0
    pytest==8.3.3
-
 
 
 ## License
