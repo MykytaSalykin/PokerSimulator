@@ -1,11 +1,12 @@
-```markdown
 # Poker Simulator (Texas Hold'em)
 
 A Python-based CLI simulator for Texas Hold'em poker, featuring hand dealing, evaluation, betting rounds (preflop, flop, turn, river), dynamic opponent behavior, and game history logging.
 
 ## Features
 - Simulates Texas Hold'em with 2 pocket cards and 5 community cards (flop, turn, river).
-- Supports betting rounds with `call`, `raise`, `fold`, `check`, `bet`, and `finish` actions (max 4 raises per street).
+- Supports betting rounds with `call`, `raise`, `fold`, `check`, `bet`, and `finish` actions.
+- **No Limit betting**: Unlimited raises per street (no artificial caps).
+- **Minimum raise enforcement**: Raises must be at least the size of the previous raise (unless going all-in).
 - Dynamic opponent behavior: bets, raises, or folds based on hand strength, pot odds, and randomness, with bets limited to player's available money.
 - Includes small and big blinds ($1/$2).
 - Evaluates hands using standard poker rankings (Royal Flush to High Card) with proper kicker comparison for tie-breakers.
@@ -24,26 +25,28 @@ A Python-based CLI simulator for Texas Hold'em poker, featuring hand dealing, ev
    ```bash
    git clone https://github.com/MykytaSalykin/PokerSimulator.git
    cd PokerSimulator
+   ```
 
 2. Create and activate a virtual environment:
    ```bash
    python -m venv .venv
    source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+   ```
 
 3. Install dependencies:
    ```bash
    pip install -r requirements.txt
-
-
+   ```
 
 ## Usage
 Run the CLI with:
 ```bash
 python -m src.cli
-
+```
 
 ## Commands
-Info: Display poker hand rankings and optional probabilities:
+
+**Info**: Display poker hand rankings and optional probabilities:
 ```bash
 python -m src.cli info
 python -m src.cli info --probability
@@ -53,9 +56,9 @@ Royal Flush: 10 - 0.0002% - 1 in 649,740
 Straight Flush: 9 - 0.0014% - 1 in 72,193
 Four of a Kind: 8 - 0.0240% - 1 in 4,165
 ...
+```
 
-
-Deal: Deal pocket cards for specified number of players (shows flop for example):
+**Deal**: Deal pocket cards for specified number of players (shows flop for example):
 ```bash
 python -m src.cli deal --hands 2
 
@@ -66,8 +69,9 @@ Hand Rank (with flop): Royal Flush
 Your cards: 2C, 3D
 Flop: 10H, JH, QH
 Hand Rank (with flop): High Card
+```
 
-Play: Play a single hand against the computer with a fixed bet:
+**Play**: Play a single hand against the computer with a fixed bet:
 ```bash
 python -m src.cli play --name Nikita --bet 10
 
@@ -81,9 +85,9 @@ With River: 10H, JH, QH, 2C, 3D
 Your hand: ['AH', 'KH'] + ['10H', 'JH', 'QH', '2C', '3D'] -> Royal Flush
 Opponent's hand: ['2C', '3D'] + ['10H', 'JH', 'QH', '2C', '3D'] -> High Card
 Nikita wins $20 with Royal Flush!
+```
 
-
-Interactive: Play multiple rounds with betting rounds (preflop, flop, turn, river):
+**Interactive**: Play multiple rounds with betting rounds (preflop, flop, turn, river):
 ```bash
 python -m src.cli interactive --name Nikita --rounds 3 --money 100
 
@@ -122,21 +126,29 @@ Wins: 2
 Losses: 1
 Ties: 0
 Money: $115
+```
 
+## Betting Rules
+
+- **No Limit**: No artificial cap on the number of raises per street
+- **Minimum Raise**: A raise must be at least the size of the previous raise (unless going all-in)
+- **Blinds**: Small blind ($1) and big blind ($2) are posted automatically
+- **All-in**: Players can bet their entire stack at any time
+- **Call/Check**: Call when there's a bet, check when there's no bet to call
 
 ## Testing
 Run unit tests to verify deck, hand evaluation, and opponent behavior:
+```bash
 pytest tests/
-
+```
 
 ## Requirements
-   Python 3.8+
-   click==8.1.7
-   colorama==0.4.6
-   iniconfig==2.1.0
-   packaging==25.0
-   pytest==8.3.3
-
+- Python 3.8+
+- click==8.1.7
+- colorama==0.4.6
+- iniconfig==2.1.0
+- packaging==25.0
+- pytest==8.3.3
 
 ## License
 MIT License
